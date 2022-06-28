@@ -9,12 +9,15 @@ import { DefaultUi, Player as PlayerVime, Youtube } from "@vime/react";
 
 import "@vime/core/themes/default.css";
 import { useGetLessonBySlugQuery } from "../../graphql/generated";
+import { useAuth0 } from "@auth0/auth0-react";
+import { LogoutButton } from "../ButtonApp/logout";
 
 interface PlayerProps {
   lessonSlug: string;
 }
 
 export function Player(props: PlayerProps) {
+  const { user, isAuthenticated } = useAuth0();
   const { data } = useGetLessonBySlugQuery({
     variables: {
       slug: props.lessonSlug,
@@ -32,7 +35,8 @@ export function Player(props: PlayerProps) {
 
   return (
     <>
-      <Box flex={1}>
+      {isAuthenticated && (
+        <Box flex={1}>
         <Box bg="black" justifyContent="center">
           <AspectRatio ratio={16 / 9}>
             <PlayerVime>
@@ -123,6 +127,7 @@ export function Player(props: PlayerProps) {
                 <Lightning size="24" />
                 Acesse o desafio
               </Box>
+              <LogoutButton />
             </Box>
           </Box>
           <Box gap="8" mt="20" display="flex" gridColumn="2">
@@ -217,6 +222,7 @@ export function Player(props: PlayerProps) {
           </Box>
         </Box>
       </Box>
+      )}
     </>
   );
 }
