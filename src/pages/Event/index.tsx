@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Flex, Image, Img, Text } from "@chakra-ui/react";
+import { Box, Flex, Img, Text, useColorMode } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { ButtonApp } from "../../components/ButtonApp";
 import { LogoutButton } from "../../components/ButtonApp/logout";
@@ -13,7 +13,7 @@ export function Event() {
 
   if (isLoading) {
     return <Box>Loading...</Box>;
-  }
+  } 
 
   return (
     <>
@@ -102,7 +102,7 @@ export function Event() {
                           </Text>
                         </Text>
                       </Box>
-                      <LogoutButton />
+                      <LogoutButton />                      
                     </Box>
                   </Box>
                   <Img src="/images/vscode.png" mt="10" />

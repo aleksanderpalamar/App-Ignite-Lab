@@ -8,7 +8,7 @@ import { theme } from "./styles/theme";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={theme}>      
       <Auth0Provider
         domain="dev-y92icslo.us.auth0.com"
         clientId="SLMFqjExj5u3rZoK59IMWX36f10jHkRh"
