@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Flex, Img, Text, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, Img, Spinner, Text, useColorMode } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import { ButtonApp } from "../../components/ButtonApp";
 import { LogoutButton } from "../../components/ButtonApp/logout";
@@ -12,8 +12,27 @@ export function Event() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
-    return <Box>Loading...</Box>;
-  } 
+    return (
+      <Box
+        display="flex"
+        minH="100vh"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+        mt="20"
+      >
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="brand.500"
+          color="gray.100"
+          size="xl"
+          mr="2"
+        />
+        <Text fontSize="2xl" fontWeight="bold">Loading...</Text>
+      </Box>
+    );
+  }
 
   return (
     <>
